@@ -4,7 +4,7 @@ import DownloadCTA from "./DownloadCTA.astro";
 
 <header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5">
   <div
-    class="nav-shell pointer-events-auto flex w-full max-w-[920px] items-center justify-between gap-4 rounded-full border border-white/10 bg-[rgb(12_12_14_/_0.72)] px-2.5 py-2.5 pl-5 text-white shadow-[0_12px_40px_rgb(0_0_0_/_0.35)] backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300 sm:gap-5 sm:pl-6"
+    class="nav-shell pointer-events-auto flex w-full max-w-[920px] items-center justify-between gap-3 rounded-full border border-white/10 bg-[rgb(12_12_14_/_0.72)] px-2.5 py-2.5 pl-5 text-white shadow-[0_12px_40px_rgb(0_0_0_/_0.35)] backdrop-blur-xl transition-[background-color,border-color,box-shadow,color,transform,padding] duration-300 sm:gap-5 sm:pl-6"
     data-nav-shell
   >
     <a href="/" class="flex shrink-0 items-center gap-3" aria-label="Groove home">
@@ -13,13 +13,13 @@ import DownloadCTA from "./DownloadCTA.astro";
         alt=""
         width="34"
         height="34"
-        class="size-[34px] rounded-[9px] ring-1 ring-white/15"
+        class="nav-icon size-[34px] rounded-[9px] ring-1 ring-white/15 transition-all duration-300"
       />
       <span class="font-display text-[22px] tracking-tight sm:text-[24px]">Groove</span>
     </a>
 
     <nav
-      class="hidden items-center gap-1 text-[14px] font-medium text-white/70 md:flex"
+      class="nav-links hidden items-center gap-1 text-[14px] font-medium text-white/70 md:flex"
       aria-label="Primary"
     >
       <a
@@ -39,11 +39,45 @@ import DownloadCTA from "./DownloadCTA.astro";
       >
     </nav>
 
-    <DownloadCTA
-      size="md"
-      variant="accent"
-      class="!h-11 !px-5 !text-[14px]"
-      label="Download"
-    />
+    <div class="flex items-center gap-2">
+      <button
+        type="button"
+        class="nav-sound inline-flex size-11 items-center justify-center rounded-full border border-white/12 bg-white/5 text-white/70 transition-colors hover:bg-white/10 hover:text-white"
+        data-sound-toggle
+        aria-pressed="false"
+        aria-label="Enable sound"
+        title="Sound off"
+      >
+        <svg class="size-4" data-icon-muted viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path
+            d="M7.2 2.4a.75.75 0 0 1 .8.05l3.5 2.55H14a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1h-2.5L8 13.05a.75.75 0 0 1-1.2-.6V3.05a.75.75 0 0 1 .4-.65Z"
+          ></path>
+          <path
+            d="m2.22 2.22 11.56 11.56a.75.75 0 1 1-1.06 1.06L1.16 3.28a.75.75 0 0 1 1.06-1.06Z"
+            fill-opacity="0.95"></path>
+        </svg>
+        <svg
+          class="hidden size-4"
+          data-icon-on
+          viewBox="0 0 16 16"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M7.2 2.4a.75.75 0 0 1 .8.05l3.5 2.55H14a1 1 0 0 1 1 1v3.5a1 1 0 0 1-1 1h-2.5L8 13.05a.75.75 0 0 1-1.2-.6V3.05a.75.75 0 0 1 .4-.65Z"
+          ></path>
+          <path
+            d="M2 6.25h1.75a.75.75 0 0 1 0 1.5H2a.75.75 0 0 1 0-1.5Zm-.5 3h2.25a.75.75 0 0 1 0 1.5H1.5a.75.75 0 0 1 0-1.5Z"
+            fill-opacity="0.7"></path>
+        </svg>
+      </button>
+
+      <DownloadCTA
+        size="md"
+        variant="accent"
+        class="!h-11 !px-5 !text-[14px]"
+        label="Download"
+      />
+    </div>
   </div>
 </header>

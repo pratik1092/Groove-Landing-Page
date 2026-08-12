@@ -38,8 +38,8 @@
   }
 
   ::selection {
-    background: color-mix(in srgb, var(--color-accent) 35%, black);
-    color: white;
+    background: color-mix(in srgb, var(--color-accent) 35%, white);
+    color: var(--color-fg-light);
   }
 
   :focus-visible {
@@ -134,7 +134,36 @@
   animation-delay: 0.48s;
 }
 
-/* —— Media hover —— */
+/* —— Media framing (plinth glow) —— */
+.media-frame {
+  position: relative;
+  padding: 2px;
+}
+
+.media-frame::before {
+  content: "";
+  position: absolute;
+  inset: 8% 4% -6%;
+  border-radius: 2.5rem;
+  background: radial-gradient(
+    ellipse at 50% 100%,
+    rgb(232 106 26 / 0.22),
+    rgb(0 0 0 / 0.55) 45%,
+    transparent 70%
+  );
+  filter: blur(28px);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.media-frame > .media-lift {
+  position: relative;
+  z-index: 1;
+  box-shadow:
+    0 30px 80px rgb(0 0 0 / 0.55),
+    0 2px 0 rgb(255 255 255 / 0.06) inset;
+}
+
 .media-lift {
   transition:
     transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
@@ -144,7 +173,9 @@
 @media (hover: hover) and (pointer: fine) {
   .media-lift:hover {
     transform: translateY(-6px) scale(1.01);
-    box-shadow: 0 28px 60px rgb(0 0 0 / 0.45);
+    box-shadow:
+      0 36px 90px rgb(0 0 0 / 0.6),
+      0 2px 0 rgb(255 255 255 / 0.08) inset;
   }
 }
 
@@ -166,22 +197,48 @@
   transform: scale(0.98);
 }
 
-/* —— Theme wash (dark → light) —— */
+/* —— Theme wash —— */
 .theme-wash {
   background: var(--color-bg-dark);
-  transition: background-color 0.4s ease;
 }
 
-.theme-wash.is-light {
-  background: var(--color-bg-light);
-  color: var(--color-fg-light);
+.theme-bridge {
+  height: clamp(4rem, 12vw, 7rem);
+  background:
+    linear-gradient(
+      to bottom,
+      var(--color-bg-dark) 0%,
+      color-mix(in srgb, var(--color-bg-dark) 55%, var(--color-bg-light)) 48%,
+      var(--color-bg-light) 100%
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+  background-blend-mode: soft-light, multiply;
+  opacity: 0.95;
 }
 
-/* —— Vignette over hero video —— */
+/* —— Hero washes —— */
 .hero-vignette {
   background:
-    linear-gradient(to bottom, rgb(12 12 14 / 0.55) 0%, rgb(12 12 14 / 0.2) 35%, rgb(12 12 14 / 0.55) 70%, var(--color-bg-dark) 100%),
-    radial-gradient(ellipse 70% 55% at 50% 40%, transparent 20%, rgb(12 12 14 / 0.65) 100%);
+    linear-gradient(
+      to bottom,
+      rgb(12 12 14 / 0.45) 0%,
+      rgb(12 12 14 / 0.12) 32%,
+      rgb(12 12 14 / 0.35) 68%,
+      var(--color-bg-dark) 100%
+    ),
+    radial-gradient(ellipse 70% 55% at 55% 40%, transparent 18%, rgb(12 12 14 / 0.55) 100%);
+}
+
+.hero-type-wash {
+  background:
+    linear-gradient(
+      105deg,
+      rgb(12 12 14 / 0.88) 0%,
+      rgb(12 12 14 / 0.72) 28%,
+      rgb(12 12 14 / 0.28) 48%,
+      transparent 62%
+    ),
+    linear-gradient(to top, rgb(12 12 14 / 0.55) 0%, transparent 38%);
 }
 
 @keyframes ken-burns {
@@ -214,6 +271,63 @@
   animation: scroll-cue 1.8s ease-in-out infinite;
 }
 
+/* —— Groove ring spin (download) —— */
+@keyframes groove-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.groove-ring {
+  animation: groove-spin 28s linear infinite;
+  transform-origin: center;
+}
+
+/* —— Nav scrolled + light invert —— */
+.nav-shell.is-scrolled {
+  transform: scale(0.98);
+  box-shadow: 0 14px 44px rgb(0 0 0 / 0.4);
+}
+
+.nav-shell.is-scrolled .nav-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.nav-shell.is-light {
+  background: rgb(255 255 255 / 0.86) !important;
+  border-color: rgb(20 20 22 / 0.1);
+  color: var(--color-fg-light);
+  box-shadow: 0 12px 40px rgb(20 20 22 / 0.12);
+}
+
+.nav-shell.is-light .nav-links {
+  color: rgb(20 20 22 / 0.62);
+}
+
+.nav-shell.is-light .nav-links a:hover {
+  background: rgb(20 20 22 / 0.06);
+  color: var(--color-fg-light);
+}
+
+.nav-shell.is-light .nav-icon {
+  ring-color: rgb(20 20 22 / 0.1);
+}
+
+.nav-shell.is-light .nav-sound {
+  border-color: rgb(20 20 22 / 0.1);
+  background: rgb(20 20 22 / 0.04);
+  color: rgb(20 20 22 / 0.65);
+}
+
+.nav-shell.is-light .nav-sound:hover {
+  background: rgb(20 20 22 / 0.08);
+  color: var(--color-fg-light);
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -232,12 +346,14 @@
   }
 
   .hero-video-ken,
-  .scroll-cue-dot {
+  .scroll-cue-dot,
+  .groove-ring {
     animation: none;
   }
 
   .media-lift:hover,
-  .cta-magnetic:hover {
+  .cta-magnetic:hover,
+  .nav-shell.is-scrolled {
     transform: none;
   }
 }

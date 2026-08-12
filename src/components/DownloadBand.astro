@@ -5,54 +5,60 @@ import { appRepoUrl, appVersion } from "../lib/site";
 
 <section
   id="download"
-  class="relative overflow-hidden px-5 py-24 sm:px-8 sm:py-32"
+  class="relative overflow-hidden px-5 py-28 sm:px-8 sm:py-36"
   data-light-band
 >
   <div
-    class="reveal-scale relative mx-auto max-w-4xl overflow-hidden rounded-[2rem] border border-[var(--color-line-light)] bg-white px-6 py-16 text-center shadow-[0_30px_80px_rgb(20_20_22_/_0.08)] sm:rounded-[2.75rem] sm:px-12 sm:py-20"
+    class="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_55%_at_50%_20%,rgb(232_106_26_/_0.08),transparent_60%)]"
+    aria-hidden="true"
   >
-    <div
-      class="pointer-events-none absolute -left-16 top-0 size-64 rounded-full bg-[var(--color-accent)]/15 blur-3xl"
-      aria-hidden="true"
-    >
-    </div>
-    <div
-      class="pointer-events-none absolute -right-12 bottom-0 size-56 rounded-full bg-[var(--color-silver)]/40 blur-3xl"
-      aria-hidden="true"
-    >
-    </div>
+  </div>
 
-    <div class="relative">
+  <div class="reveal-scale relative mx-auto max-w-3xl text-center" data-download-stage>
+    <div class="relative mx-auto mb-10 inline-flex size-28 items-center justify-center sm:size-32">
+      <svg
+        class="groove-ring absolute inset-[-18%] text-[var(--color-fg-light)]/12"
+        viewBox="0 0 120 120"
+        fill="none"
+        aria-hidden="true"
+      >
+        <circle cx="60" cy="60" r="52" stroke="currentColor" stroke-width="0.75"></circle>
+        <circle cx="60" cy="60" r="42" stroke="currentColor" stroke-width="0.75"></circle>
+        <circle cx="60" cy="60" r="32" stroke="currentColor" stroke-width="0.75"></circle>
+        <circle cx="60" cy="60" r="22" stroke="currentColor" stroke-width="0.75"></circle>
+        <circle cx="60" cy="60" r="12" stroke="currentColor" stroke-width="1"></circle>
+      </svg>
       <img
         src="/brand/app-icon.png"
         alt=""
-        width="72"
-        height="72"
-        class="mx-auto size-[72px] rounded-[18px] shadow-[0_12px_32px_rgb(0_0_0_/_0.2)] ring-1 ring-black/5"
+        width="88"
+        height="88"
+        class="relative size-[72px] rounded-[18px] shadow-[0_16px_40px_rgb(20_20_22_/_0.18)] ring-1 ring-black/5 sm:size-[88px] sm:rounded-[22px]"
+        data-download-icon
       />
-      <h2
-        class="mt-8 text-balance font-display text-4xl tracking-tight text-[var(--color-fg-light)] sm:text-5xl"
-      >
-        Drop the needle.
-      </h2>
-      <p class="mx-auto mt-4 max-w-md text-lg text-[var(--color-muted-light)]">
-        Drag Groove into Applications. Play a track. Your desk starts spinning.
-      </p>
-      <div class="mt-10 flex flex-wrap items-center justify-center gap-3">
-        <DownloadCTA size="lg" variant="accent" label="Download Groove 1.0" />
-        <a
-          href={appRepoUrl + "/releases"}
-          class="inline-flex h-[52px] items-center rounded-full border border-black/8 bg-[var(--color-bg-light)] px-6 text-[15px] font-semibold text-[var(--color-fg-light)] transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          View release notes
-        </a>
-      </div>
-      <p class="mt-6 text-sm text-[var(--color-muted-light)]">
-        Groove {appVersion} · Gatekeeper may ask you to Open once · Automation for
-        Spotify / Music
-      </p>
     </div>
+
+    <h2
+      class="text-balance font-display text-4xl tracking-tight text-[var(--color-fg-light)] sm:text-5xl md:text-6xl"
+    >
+      Drop the needle.
+    </h2>
+    <p class="mx-auto mt-5 max-w-md text-lg text-[var(--color-muted-light)] sm:text-xl">
+      Drag Groove into Applications. Play a track. Your desk starts spinning.
+    </p>
+    <div class="mt-10 flex flex-wrap items-center justify-center gap-3" data-download-cta>
+      <DownloadCTA size="lg" variant="accent" label="Download Groove 1.0" />
+      <a
+        href={appRepoUrl + "/releases"}
+        class="inline-flex h-[52px] items-center rounded-full border border-black/10 bg-white/70 px-6 text-[15px] font-semibold text-[var(--color-fg-light)] backdrop-blur-sm transition-all duration-300 hover:-translate-y-0.5 hover:bg-white"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View release notes
+      </a>
+    </div>
+    <p class="mt-6 text-sm text-[var(--color-muted-light)]">
+      Groove {appVersion} · Gatekeeper may ask you to Open once · Automation for Spotify / Music
+    </p>
   </div>
 </section>

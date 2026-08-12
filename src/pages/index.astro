@@ -17,7 +17,12 @@ import Footer from "../components/Footer.astro";
         eyebrow="Live"
         headline="It just knows."
         support="Album art, spin, and tonearm follow Spotify and Apple Music — no login, no API keys."
-        mediaSrc="/media/beat-live.jpg"
+        mediaSrc="/media/still-01.jpg"
+        stills={[
+          "/media/still-02.jpg",
+          "/media/still-03.jpg",
+          "/media/still-04.jpg",
+        ]}
         mediaAlt="Groove turntable wallpaper showing Now Playing album art and vinyl."
       />
       <Beat
@@ -31,30 +36,16 @@ import Footer from "../components/Footer.astro";
         videoSrc="/media/moods.mp4"
         reverse
       />
-      <div class="bg-[var(--color-bg-light)] text-[var(--color-fg-light)]" data-light-section>
+
+      <div class="theme-bridge" data-theme-bridge aria-hidden="true"></div>
+
+      <div
+        class="bg-[var(--color-bg-light)] text-[var(--color-fg-light)]"
+        data-light-section
+      >
         <DownloadBand />
         <Footer />
       </div>
     </main>
   </div>
 </Layout>
-
-<style>
-  [data-light-section] footer {
-    border-color: rgb(20 20 22 / 0.08);
-  }
-
-  [data-light-section] footer p,
-  [data-light-section] footer a,
-  [data-light-section] footer span {
-    color: rgb(20 20 22 / 0.55);
-  }
-
-  [data-light-section] footer .font-display {
-    color: rgb(20 20 22 / 0.9);
-  }
-
-  [data-light-section] footer a:hover {
-    color: rgb(20 20 22);
-  }
-</style>
