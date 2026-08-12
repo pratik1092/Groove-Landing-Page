@@ -1,0 +1,35 @@
+---
+import { appRepoUrl } from "../lib/site";
+---
+
+<footer class="border-t border-white/8 px-5 py-10 sm:px-8" data-footer>
+  <div
+    class="mx-auto flex max-w-6xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center"
+  >
+    <div class="flex items-center gap-3">
+      <img
+        src="/brand/app-icon.png"
+        alt=""
+        width="28"
+        height="28"
+        class="size-7 rounded-[7px] ring-1 ring-white/10"
+      />
+      <div>
+        <p class="font-display text-lg text-white/90">Groove</p>
+        <p class="text-sm text-white/40">Everything stays on your Mac.</p>
+      </div>
+    </div>
+    <div class="flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-white/45">
+      <a
+        href={appRepoUrl}
+        class="transition-colors hover:text-white"
+        target="_blank"
+        rel="noopener noreferrer">GitHub</a
+      >
+      <a href="#download" class="transition-colors hover:text-white" data-download-link
+        >Download</a
+      >
+      <span>© {new Date().getFullYear()}</span>
+    </div>
+  </div>
+</footer>

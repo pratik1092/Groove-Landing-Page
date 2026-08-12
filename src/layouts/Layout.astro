@@ -1,0 +1,42 @@
+---
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
+import "../styles/global.css";
+import { siteDescription, siteTitle } from "../lib/site";
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = siteTitle,
+  description = siteDescription,
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <meta name="theme-color" content="#0C0C0E" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/media/og-still.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/brand/app-icon.png" />
+    <title>{title}</title>
+  </head>
+  <body class="min-h-dvh antialiased">
+    <slot />
+    <script>
+      import "../scripts/motion.ts";
+    </script>
+    <Analytics />
+    <SpeedInsights />
+  </body>
+</html>

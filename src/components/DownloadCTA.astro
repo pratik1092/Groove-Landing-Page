@@ -1,0 +1,52 @@
+---
+import { appVersion, downloadFallbackUrl } from "../lib/site";
+
+interface Props {
+  variant?: "accent" | "ghost" | "dark" | "light";
+  size?: "md" | "lg";
+  class?: string;
+  label?: string;
+}
+
+const {
+  variant = "accent",
+  size = "md",
+  class: className = "",
+  label = "Download for Mac",
+} = Astro.props;
+
+const base =
+  "cta-magnetic inline-flex items-center justify-center gap-2.5 font-semibold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]";
+
+const sizes = {
+  md: "h-11 min-h-11 px-5 text-sm rounded-full",
+  lg: "h-[52px] min-h-[52px] px-7 text-[15px] rounded-full",
+};
+
+const variants = {
+  accent:
+    "bg-[var(--color-accent)] text-white shadow-[0_12px_32px_rgb(232_106_26_/_0.35)] hover:bg-[var(--color-accent-deep)] hover:shadow-[0_16px_40px_rgb(232_106_26_/_0.45)]",
+  ghost:
+    "bg-white/10 text-white border border-white/15 backdrop-blur-md hover:bg-white/16",
+  dark:
+    "bg-[var(--color-fg-light)] text-white hover:bg-black",
+  light:
+    "bg-white text-[var(--color-fg-light)] shadow-sm hover:bg-[var(--color-bg-light)]",
+};
+---
+
+<a
+  href={downloadFallbackUrl}
+  class={`${base} ${sizes[size]} ${variants[variant]} ${className}`}
+  data-download
+  download
+>
+  <svg class="size-4 opacity-90" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+    <path
+      d="M8.75 2.75a.75.75 0 0 0-1.5 0v5.69L5.03 6.22a.75.75 0 0 0-1.06 1.06l3.5 3.5a.75.75 0 0 0 1.06 0l3.5-3.5a.75.75 0 1 0-1.06-1.06L8.75 8.44V2.75Z"
+    ></path>
+    <path d="M3.5 12.75a.75.75 0 0 0 0 1.5h9a.75.75 0 0 0 0-1.5h-9Z"></path>
+  </svg>
+  <span>{label}</span>
+  <span class="sr-only">version {appVersion}</span>
+</a>

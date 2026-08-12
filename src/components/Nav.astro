@@ -1,0 +1,49 @@
+---
+import DownloadCTA from "./DownloadCTA.astro";
+---
+
+<header class="pointer-events-none fixed inset-x-0 top-0 z-50 flex justify-center px-4 pt-4 sm:pt-5">
+  <div
+    class="nav-shell pointer-events-auto flex w-full max-w-[920px] items-center justify-between gap-4 rounded-full border border-white/10 bg-[rgb(12_12_14_/_0.72)] px-2.5 py-2.5 pl-5 text-white shadow-[0_12px_40px_rgb(0_0_0_/_0.35)] backdrop-blur-xl transition-[background-color,border-color,box-shadow] duration-300 sm:gap-5 sm:pl-6"
+    data-nav-shell
+  >
+    <a href="/" class="flex shrink-0 items-center gap-3" aria-label="Groove home">
+      <img
+        src="/brand/app-icon.png"
+        alt=""
+        width="34"
+        height="34"
+        class="size-[34px] rounded-[9px] ring-1 ring-white/15"
+      />
+      <span class="font-display text-[22px] tracking-tight sm:text-[24px]">Groove</span>
+    </a>
+
+    <nav
+      class="hidden items-center gap-1 text-[14px] font-medium text-white/70 md:flex"
+      aria-label="Primary"
+    >
+      <a
+        href="#live"
+        class="rounded-full px-4 py-2 transition-colors hover:bg-white/10 hover:text-white"
+        >Live</a
+      >
+      <a
+        href="#moods"
+        class="rounded-full px-4 py-2 transition-colors hover:bg-white/10 hover:text-white"
+        >Moods</a
+      >
+      <a
+        href="#download"
+        class="rounded-full px-4 py-2 transition-colors hover:bg-white/10 hover:text-white"
+        >Download</a
+      >
+    </nav>
+
+    <DownloadCTA
+      size="md"
+      variant="accent"
+      class="!h-11 !px-5 !text-[14px]"
+      label="Download"
+    />
+  </div>
+</header>

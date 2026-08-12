@@ -1,0 +1,60 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Nav from "../components/Nav.astro";
+import Hero from "../components/Hero.astro";
+import Beat from "../components/Beat.astro";
+import DownloadBand from "../components/DownloadBand.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout>
+  <div class="theme-wash" data-theme-wash>
+    <Nav />
+    <main>
+      <Hero />
+      <Beat
+        id="live"
+        eyebrow="Live"
+        headline="It just knows."
+        support="Album art, spin, and tonearm follow Spotify and Apple Music — no login, no API keys."
+        mediaSrc="/media/beat-live.jpg"
+        mediaAlt="Groove turntable wallpaper showing Now Playing album art and vinyl."
+      />
+      <Beat
+        id="moods"
+        eyebrow="Moods"
+        headline="Eight desks. One needle."
+        support="Night Lounge to Candleglow — pick a look; the wallpaper shifts with the session."
+        mediaSrc="/media/beat-moods.jpg"
+        mediaAlt="Groove Settings Looks panel beside the live turntable wallpaper."
+        mediaType="video"
+        videoSrc="/media/moods.mp4"
+        reverse
+      />
+      <div class="bg-[var(--color-bg-light)] text-[var(--color-fg-light)]" data-light-section>
+        <DownloadBand />
+        <Footer />
+      </div>
+    </main>
+  </div>
+</Layout>
+
+<style>
+  [data-light-section] footer {
+    border-color: rgb(20 20 22 / 0.08);
+  }
+
+  [data-light-section] footer p,
+  [data-light-section] footer a,
+  [data-light-section] footer span {
+    color: rgb(20 20 22 / 0.55);
+  }
+
+  [data-light-section] footer .font-display {
+    color: rgb(20 20 22 / 0.9);
+  }
+
+  [data-light-section] footer a:hover {
+    color: rgb(20 20 22);
+  }
+</style>
